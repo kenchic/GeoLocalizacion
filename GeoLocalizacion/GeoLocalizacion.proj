@@ -63,6 +63,7 @@
   <ItemGroup>
     <Content Include="index.html" />
     <Content Include="css\index.css" />
+    <Content Include="js\Camara.js" />
     <Content Include="js\Geo.js" />
     <Content Include="js\index.js" />
     <Content Include="img\logo.png" />
