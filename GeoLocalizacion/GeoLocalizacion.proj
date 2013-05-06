@@ -36,6 +36,7 @@
     <Folder Include="App_Resources\Android\drawable-nodpi">
       <Platform>Android</Platform>
     </Folder>
+    <Folder Include="css" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="App_Resources\iOS\icon.png" />
@@ -61,13 +62,12 @@
     <Resource Include="App_Resources\Android\drawable-nodpi\splashscreen.9.png" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="img\fondo.png" />
     <Content Include="index.html" />
-    <Content Include="css\index.css" />
+    <Content Include="css\estilos.css" />
     <Content Include="js\Camara.js" />
     <Content Include="js\Geo.js" />
     <Content Include="js\index.js" />
-    <Content Include="img\logo.png" />
-    <Content Include="img\cordova.png" />
     <Content Include="cordova.ios.js">
       <Platform>iOS</Platform>
       <TargetName>cordova.js</TargetName>

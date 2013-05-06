@@ -1,32 +1,30 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-        <meta name="format-detection" content="telephone=no" />
-        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
-        <link rel="stylesheet" type="text/css" href="css/index.css" />
-        <title>GeoLocalización</title>
-    </head>
-    <body>
-        <div class="app">
-            <h1>GeoLocalización</h1>            
-        </div>        
-        <div class="content">
+	<head>
+		<title>Mi Lista</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<meta charset="utf-8">
+		<link href="css/estilos.css" rel="stylesheet" type="text/css" />
+	</head>
+	<body>
+		<header class="header"> 
+			<h1>Mi Lista</h1>
+		</header>
+		<div class="content">
 			<div>
                 <input class="inputBox" type="text" id="todo" placeholder="Add New Item" />
-				<button class="button" id="addButton" onclick="addTodo(); return false;">Agregar Sitio</button>
+				<button class="button" id="addButton" onclick="addTodo(); return false;">Guardar</button>
 			</div>
-            <div class="list-label">Sitios:</div>
+            <div class="list-label">Puntos:</div>
             <ul id="todoItems"></ul>
 		</div>
 		<footer class="footer">
-			<div>Cordova Plugins Samples</div> 
+			<div>@KenKhik</div> 
 		</footer>
         <script type="text/javascript" charset="utf-8" src="cordova.js"></script>
 		<script type="text/javascript" charset="utf-8" src="Plugins/SQLite/SQLitePlugin.js"></script>
-        <script type="text/javascript" charset="utf-8" src="scripts/main.js"></script>
-    </body>
+        <script type="text/javascript" charset="utf-8" src="js/Sqlite.js"></script>
+	</body>
 </html>
-
 
 

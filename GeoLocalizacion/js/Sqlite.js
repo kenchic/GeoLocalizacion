@@ -61,8 +61,8 @@ app.refresh = function() {
 		for (var i = 0; i < rs.rows.length; i++) {
 			rowOutput += renderTodo(rs.rows.item(i));
 		}
-        tx = '';        
-		todoItems.innerHTML = rowOutput + tx;
+      
+		todoItems.innerHTML = rowOutput;
 	}
     
 	var db = app.db;

@@ -1,13 +1,13 @@
-document.addEventListener("deviceready", onDeviceReady, false);
+//document.addEventListener("deviceready", onDeviceReady, false);
  
 function id(element) {
     return document.getElementById(element);
 }
 
-function onDeviceReady() {
+/*function onDeviceReady() {
 	cameraApp = new cameraApp();
     cameraApp.run();
-}
+}*/
 
 
 

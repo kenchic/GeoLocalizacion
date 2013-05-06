@@ -2,13 +2,13 @@ function id(element) {
 	return document.getElementById(element);
 }
  
-document.addEventListener("deviceready", onDeviceReady, false);
+/*document.addEventListener("deviceready", onDeviceReady, false);
  
 function onDeviceReady() {
 	geolocationApp = new geolocationApp();
 	geolocationApp.run();
     
-}
+}*/
  
 function geolocationApp() {
 }
