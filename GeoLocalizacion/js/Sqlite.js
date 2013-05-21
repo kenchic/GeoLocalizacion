@@ -18,7 +18,8 @@ app.openDb = function() {
 app.createTable = function() {
 	var db = app.db;
 	db.transaction(function(tx) {
-		tx.executeSql("CREATE TABLE IF NOT EXISTS todo(ID INTEGER PRIMARY KEY ASC, todo TEXT, added_on DATETIME)", []);
+        //tx.executeSql("DROP TABLE IF EXISTS puntos", []);
+		tx.executeSql("CREATE TABLE IF NOT EXISTS puntos(ID INTEGER PRIMARY KEY ASC, todo TEXT, longitud NUMERIC, added_on DATETIME)", []);
 	});
 }
       
@@ -26,8 +27,9 @@ app.addTodo = function(todoText) {
 	var db = app.db;
 	db.transaction(function(tx) {
 		var addedOn = new Date();
-		tx.executeSql("INSERT INTO todo(todo, added_on) VALUES (?,?)",
-					  [todoText, addedOn],
+        navigator.geolocation.watchPosition(obtenerPosicion);
+		tx.executeSql("INSERT INTO puntos(todo, longitud, added_on) VALUES (?,?,?)",
+					  [todoText, Longitud, addedOn],
 					  app.onSuccess,
 					  app.onError);
 	});
@@ -44,7 +46,7 @@ app.onSuccess = function(tx, r) {
 app.deleteTodo = function(id) {
 	var db = app.db;
 	db.transaction(function(tx) {
-		tx.executeSql("DELETE FROM todo WHERE ID=?", [id],
+		tx.executeSql("DELETE FROM puntos WHERE ID=?", [id],
 					  app.onSuccess,
 					  app.onError);
 	});
@@ -52,7 +54,7 @@ app.deleteTodo = function(id) {
 
 app.refresh = function() {
 	var renderTodo = function (row) {
-		return "<li>" + "<div class='todo-check'></div>" + row.todo + "<a class='button delete' href='javascript:void(0);'  onclick='app.deleteTodo(" + row.ID + ");'><p class='todo-delete'></p></a>" + "<div class='clear'></div>" + "</li>";
+		return "<li>" + "<div class='todo-check'></div>" + row.todo + " lon:" + row.longitud +  "<a class='button delete' href='javascript:void(0);'  onclick='app.deleteTodo(" + row.ID + ");'><p class='todo-delete'></p></a>" + "<div class='clear'></div>" + "</li>";
 	}
     
 	var render = function (tx, rs) {
@@ -67,7 +69,7 @@ app.refresh = function() {
     
 	var db = app.db;
 	db.transaction(function(tx) {
-		tx.executeSql("SELECT * FROM todo", [], 
+		tx.executeSql("SELECT * FROM puntos", [], 
 					  render, 
 					  app.onError);
 	});

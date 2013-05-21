@@ -1,14 +1,23 @@
-function id(element) {
+var Longitud;
+
+function obtenerPosicion()
+{  
+  x.innerHTML="Latitude: " + position.coords.latitude + 
+  "<br>Longitude: " + position.coords.longitude;	
+  Longitud = position.coords.longitude;
+}
+
+/*function id(element) {
 	return document.getElementById(element);
 }
- 
-/*document.addEventListener("deviceready", onDeviceReady, false);
+
+document.addEventListener("deviceready", onDeviceReady, false);
  
 function onDeviceReady() {
 	geolocationApp = new geolocationApp();
 	geolocationApp.run();
     
-}*/
+}
  
 function geolocationApp() {
 }
@@ -57,6 +66,7 @@ geolocationApp.prototype = {
 				frequency: 1000,
 				enableHighAccuracy: true
 			};
+            
 			that._watchID = navigator.geolocation.watchPosition(function() {
 				that._onSuccess.apply(that, arguments);
 			}, function() {
@@ -78,7 +88,7 @@ geolocationApp.prototype = {
 						 'Heading: ' + position.coords.heading + '<br />' +
 						 'Speed: ' + position.coords.speed + '<br />' +
 						 'Timestamp: ' + new Date(position.timestamp) + '<br /><hr/>');
-	},
+	},    
     
 	_onError:function(error) {
 		this._setResults('code: ' + error.code + '<br/>' +
@@ -93,4 +103,4 @@ geolocationApp.prototype = {
 			document.getElementById("results").innerHTML = value;
 		}
 	},
-}
+}*/
