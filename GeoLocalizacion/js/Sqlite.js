@@ -4,6 +4,7 @@ document.addEventListener("deviceready", init, false);
 
 var app = {};
 app.db = null;
+app.Longitud=0;
       
 app.openDb = function() {
     if(window.sqlitePlugin !== undefined) {
@@ -18,23 +19,27 @@ app.openDb = function() {
 app.createTable = function() {
 	var db = app.db;
 	db.transaction(function(tx) {
-        //tx.executeSql("DROP TABLE IF EXISTS puntos", []);
+        //tx.executeSql("DROP TABLE IF EXISTS puntos", []);        
 		tx.executeSql("CREATE TABLE IF NOT EXISTS puntos(ID INTEGER PRIMARY KEY ASC, todo TEXT, longitud NUMERIC, added_on DATETIME)", []);
 	});
 }
       
 app.addTodo = function(todoText) {
-	var db = app.db;
+	var db = app.db;    
 	db.transaction(function(tx) {
-		var addedOn = new Date();
-        navigator.geolocation.watchPosition(obtenerPosicion);
+		var addedOn = new Date();        
+        var options = {
+				frequency: 1000,
+				enableHighAccuracy: true
+			};
+        navigator.geolocation.getCurrentPosition(app.obtenerPosicion,app.errorHandler,options);
 		tx.executeSql("INSERT INTO puntos(todo, longitud, added_on) VALUES (?,?,?)",
-					  [todoText, Longitud, addedOn],
+					  [todoText, app.Longitud, addedOn],
 					  app.onSuccess,
 					  app.onError);
 	});
-}
-      
+} 
+    
 app.onError = function(tx, e) {
 	console.log("Error: " + e.message);
 } 
@@ -80,6 +85,9 @@ function init() {
 	app.openDb();
 	app.createTable();
 	app.refresh();
+    
+    var options = {enableHighAccuracy: true};
+    navigator.geolocation.getCurrentPosition(app.obtenerPosicion,app.errorHandler,options);
 }
       
 function addTodo() {

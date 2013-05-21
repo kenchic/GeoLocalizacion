@@ -1,10 +1,15 @@
-var Longitud;
 
-function obtenerPosicion()
+app.obtenerPosicion = function(position)
 {  
-  x.innerHTML="Latitude: " + position.coords.latitude + 
-  "<br>Longitude: " + position.coords.longitude;	
-  Longitud = position.coords.longitude;
+  app.Longitud = position.coords.longitude;  
+} 
+
+app.errorHandler = function(err) {
+  if(err.code == 1) {
+    alert("Error: Access is denied!");
+  }else if( err.code == 2) {
+    alert("Error: Position is unavailable!");
+  }
 }
 
 /*function id(element) {
@@ -15,8 +20,7 @@ document.addEventListener("deviceready", onDeviceReady, false);
  
 function onDeviceReady() {
 	geolocationApp = new geolocationApp();
-	geolocationApp.run();
-    
+	geolocationApp.run();    
 }
  
 function geolocationApp() {
