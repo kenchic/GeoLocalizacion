@@ -5,6 +5,7 @@ document.addEventListener("deviceready", init, false);
 var app = {};
 app.db = null;
 app.Longitud=0;
+app.Latitud=0;
       
 app.openDb = function() {
     if(window.sqlitePlugin !== undefined) {
@@ -20,7 +21,7 @@ app.createTable = function() {
 	var db = app.db;
 	db.transaction(function(tx) {
         //tx.executeSql("DROP TABLE IF EXISTS puntos", []);        
-		tx.executeSql("CREATE TABLE IF NOT EXISTS puntos(ID INTEGER PRIMARY KEY ASC, todo TEXT, longitud NUMERIC, added_on DATETIME)", []);
+		tx.executeSql("CREATE TABLE IF NOT EXISTS puntos(ID INTEGER PRIMARY KEY ASC, todo TEXT, longitud NUMERIC, latitud NUMERIC, added_on DATETIME)", []);
 	});
 }
       
@@ -33,8 +34,8 @@ app.addTodo = function(todoText) {
 				enableHighAccuracy: true
 			};
         navigator.geolocation.getCurrentPosition(app.obtenerPosicion,app.errorHandler,options);
-		tx.executeSql("INSERT INTO puntos(todo, longitud, added_on) VALUES (?,?,?)",
-					  [todoText, app.Longitud, addedOn],
+		tx.executeSql("INSERT INTO puntos(todo, longitud, latitud, added_on) VALUES (?,?,?,?)",
+					  [todoText, app.Longitud,app.Latitud, addedOn],
 					  app.onSuccess,
 					  app.onError);
 	});
@@ -59,7 +60,7 @@ app.deleteTodo = function(id) {
 
 app.refresh = function() {
 	var renderTodo = function (row) {
-		return "<li>" + "<div class='todo-check'></div>" + row.todo + " lon:" + row.longitud +  "<a class='button delete' href='javascript:void(0);'  onclick='app.deleteTodo(" + row.ID + ");'><p class='todo-delete'></p></a>" + "<div class='clear'></div>" + "</li>";
+		return "<li>" + "<div class='todo-check'></div>" + row.todo + " lon:" + row.longitud +  " lat:" + row.latitud +  "<a class='button delete' href='javascript:void(0);'  onclick='app.deleteTodo(" + row.ID + ");'><p class='todo-delete'></p></a>" + "<div class='clear'></div>" + "</li>";
 	}
     
 	var render = function (tx, rs) {

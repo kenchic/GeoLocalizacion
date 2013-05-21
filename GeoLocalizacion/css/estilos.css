@@ -136,11 +136,11 @@ h1
 .footer
 {
 	width: 100%;
-	height: 22px;
+	height: 31px;
 	position: fixed;
 	bottom: 0px;
 	margin: 0 auto;
-	background-image: url("img/footer-background.png");
+	background-image: url("../img/fondoPiePagina.png");
 	background-repeat: repeat-x;
 }
 
@@ -164,7 +164,7 @@ h1
 .footer div
 {
 	float: right;
-	color: #ABADB0;
+	color: #FFFFFF;
 	padding-right: 12px;
 	padding-top: 2px;
 }

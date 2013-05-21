@@ -37,6 +37,7 @@
       <Platform>Android</Platform>
     </Folder>
     <Folder Include="css" />
+    <Folder Include="img" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="App_Resources\iOS\icon.png" />
@@ -62,6 +63,7 @@
     <Resource Include="App_Resources\Android\drawable-nodpi\splashscreen.9.png" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="img\fondoPiePagina.png" />
     <Content Include="img\fondo.png" />
     <Content Include="index.html" />
     <Content Include="css\estilos.css" />
