@@ -6,6 +6,8 @@ var app = {};
 app.db = null;
 app.Longitud=0;
 app.Latitud=0;
+app.Altitud=0;
+app.Foto="";
       
 app.openDb = function() {
     if(window.sqlitePlugin !== undefined) {
@@ -21,12 +23,15 @@ app.createTable = function() {
 	var db = app.db;
 	db.transaction(function(tx) {
         //tx.executeSql("DROP TABLE IF EXISTS puntos", []);        
-		tx.executeSql("CREATE TABLE IF NOT EXISTS puntos(ID INTEGER PRIMARY KEY ASC, todo TEXT, longitud NUMERIC, latitud NUMERIC, added_on DATETIME)", []);
+		tx.executeSql("CREATE TABLE IF NOT EXISTS puntos(ID INTEGER PRIMARY KEY ASC, punto TEXT, longitud NUMERIC, latitud NUMERIC, altitud NUMERIC, foto TEXT, added_on DATETIME)", []);
 	});
 }
       
 app.addTodo = function(todoText) {
 	var db = app.db;    
+    
+    var smallImage = document.getElementById('smallImage');
+    smallImage.style.display = 'none';
 	db.transaction(function(tx) {
 		var addedOn = new Date();        
         var options = {
@@ -34,8 +39,8 @@ app.addTodo = function(todoText) {
 				enableHighAccuracy: true
 			};
         navigator.geolocation.getCurrentPosition(app.obtenerPosicion,app.errorHandler,options);
-		tx.executeSql("INSERT INTO puntos(todo, longitud, latitud, added_on) VALUES (?,?,?,?)",
-					  [todoText, app.Longitud,app.Latitud, addedOn],
+		tx.executeSql("INSERT INTO puntos(punto, longitud, latitud, altitud, foto, added_on) VALUES (?,?,?,?,?,?)",
+					  [todoText, app.Longitud,app.Latitud, app.Altitud, app.Foto, addedOn],
 					  app.onSuccess,
 					  app.onError);
 	});
@@ -60,7 +65,7 @@ app.deleteTodo = function(id) {
 
 app.refresh = function() {
 	var renderTodo = function (row) {
-		return "<li>" + "<div class='todo-check'></div>" + row.todo + " lon:" + row.longitud +  " lat:" + row.latitud +  "<a class='button delete' href='javascript:void(0);'  onclick='app.deleteTodo(" + row.ID + ");'><p class='todo-delete'></p></a>" + "<div class='clear'></div>" + "</li>";
+		return "<li>" + "<div class='todo-check'></div>" + row.punto + "<img style='width:60px; height:60px;' src='" + row.foto + "' /><a class='button delete' href='javascript:void(0);'  onclick='app.deleteTodo(" + row.ID + ");'><p class='todo-delete'></p></a>" + "<div class='clear'></div>" + "</li>";
 	}
     
 	var render = function (tx, rs) {
@@ -89,6 +94,9 @@ function init() {
     
     var options = {enableHighAccuracy: true};
     navigator.geolocation.getCurrentPosition(app.obtenerPosicion,app.errorHandler,options);
+    
+    cameraApp = new cameraApp();
+    cameraApp.run();
 }
       
 function addTodo() {

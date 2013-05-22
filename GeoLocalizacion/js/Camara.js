@@ -1,4 +1,6 @@
-//document.addEventListener("deviceready", onDeviceReady, false);
+
+
+/*document.addEventListener("deviceready", onDeviceReady, false);*/
  
 function id(element) {
     return document.getElementById(element);
@@ -8,8 +10,6 @@ function id(element) {
 	cameraApp = new cameraApp();
     cameraApp.run();
 }*/
-
-
 
 function cameraApp(){}
 
@@ -98,6 +98,7 @@ cameraApp.prototype={
     
         // Show the captured photo.
         smallImage.src = "data:image/jpeg;base64," + imageData;
+        app.Foto = "data:image/jpeg;base64," + imageData;
     },
     
     _onPhotoURISuccess: function(imageURI) {

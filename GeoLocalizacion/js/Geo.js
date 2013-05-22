@@ -3,7 +3,7 @@ app.obtenerPosicion = function(position)
 {  
   app.Longitud = position.coords.longitude;  
   app.Latitud = position.coords.latitude;
-    
+  app.Altitud = position.coords.altitude;
 } 
 
 app.errorHandler = function(err) {

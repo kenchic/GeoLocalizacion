@@ -11,6 +11,10 @@
 			<h1>Mi Lista</h1>
 		</header>
 		<div class="content">
+            <div>
+		        <button class="button" id="capturePhotoButton">Foto</button>
+                <img style="display:none;margin:0 auto; width:120px; height:120px;" id="smallImage" src="" />
+            </div>
 			<div>
                 <input class="inputBox" type="text" id="todo" placeholder="Agregar Punto" />
 				<button class="button" id="addButton" onclick="addTodo(); return false;">Guardar</button>
@@ -25,6 +29,8 @@
 		<script type="text/javascript" charset="utf-8" src="Plugins/SQLite/SQLitePlugin.js"></script>        
         <script type="text/javascript" charset="utf-8" src="js/Sqlite.js"></script>
         <script type="text/javascript" charset="utf-8" src="js/Geo.js"></script>
+        <script type="text/javascript" charset="utf-8" src="js/Camara.js"></script>
+        
         
 	</body>
 </html>
