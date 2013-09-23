@@ -1,0 +1,55 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title></title>
+    </head>
+    <body>
+        <div data-role="view" id="tabstrip-home" data-title="Hello World!">
+            <h1>@Kenchic</h1>
+            <p>
+                Calculadora Intereses.
+            </p>
+        </div>
+
+        <div data-role="view" id="tabstrip-uiinteraction" data-title="UI Interaction">
+            <h1>Información</h1>
+            <div id='formIngreso'>
+                <ul data-role="listview" data-style="inset">
+                    <li>
+                        <label for="txtMonto" style="display: inline-block;">Monto:                                
+                            <input type="number" id="txtMonto" value="" />                            
+                        </label>
+                    </li>
+                    <li>
+                        <label for="txtIntereses" style="display: inline-block;">Interes:
+                            <input type="number" id="txtIntereses" value="" />                            
+                        </label>
+                    </li>
+                    <li>
+                        <label for="txtNoCuotas" style="display: inline-block;">No Cuotas:
+                            <input type="number" id="txtNoCuotas" value="" />                            
+                        </label>
+                    </li>
+                </ul>
+            </div>
+            <div id='formResultado' style="display:block;"></div>
+            <div class="buttonArea">
+                <a id="resetButton" data-role="button" data-click="Limpiar" data-icon="refresh">Limpiar</a>
+                <a id="submitButton" data-role="button" data-click="CalcularCuotas" data-icon="compose">Enter</a>
+            </div>
+        </div>
+
+        <div data-role="view" id="tabstrip-geolocation" data-title="Geolocation">
+            <h1>My Location</h1>
+            <div id="geoLocationContainer">
+                <div id="myLocation">Unable to get location information. Please check your network connection and try again.</div>
+                <a id="refreshMap" data-role="button" data-click="getLocation" data-icon="refresh">Refresh Location</a>
+                <div id="map_canvas"></div>
+            </div>
+        </div>
+        
+        
+        
+    </body>
+</html>

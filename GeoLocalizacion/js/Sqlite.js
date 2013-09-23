@@ -65,7 +65,14 @@ app.deleteTodo = function(id) {
 
 app.refresh = function() {
 	var renderTodo = function (row) {
-		return "<li>" + "<div class='todo-check'></div>" + row.punto + "<img style='width:60px; height:60px;' src='" + row.foto + "' /><a class='button delete' href='javascript:void(0);'  onclick='app.deleteTodo(" + row.ID + ");'><p class='todo-delete'></p></a>" + "<div class='clear'></div>" + "</li>";
+		return "<div class='product_overview'>" +
+        "<img style='width:60px; height:60px;' src='" + row.foto + "' />" +
+        "<div class='title'>" + row.punto + "<br/>" +         
+        "Lon: " + row.longitud +          
+        "<br/>Lat: " + row.latitud + "" +
+        "<a class='button delete' href='javascript:void(0);'  onclick='app.deleteTodo(" + row.ID + ");'>"+
+        "<p class='todo-delete'></p></a>" + "<div class='clear'></div></div>" +
+        "</div>";
 	}
     
 	var render = function (tx, rs) {

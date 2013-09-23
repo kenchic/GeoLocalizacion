@@ -7,31 +7,46 @@
 		<link href="css/estilos.css" rel="stylesheet" type="text/css" />
 	</head>
 	<body>
-		<header class="header"> 
-			<h1>Mi Lista</h1>
-		</header>
-		<div class="content">
-            <div>
-		        <button class="button" id="capturePhotoButton">Foto</button>
-                <img style="display:none;margin:0 auto; width:120px; height:120px;" id="smallImage" src="" />
-            </div>
-			<div>
-                <input class="inputBox" type="text" id="todo" placeholder="Agregar Punto" />
-				<button class="button" id="addButton" onclick="addTodo(); return false;">Guardar</button>
-			</div>
-            <div class="list-label">Puntos:</div>
-            <ul id="todoItems"></ul>
-		</div>
-		<footer class="footer">
-			<div>@KenKhik</div> 
-		</footer>
+        <div data-role="view" id="tabstrip-home" data-title="Mis Puntos">
+    		<header class="header"> 
+    			<h1>Mi Lista</h1>
+    		</header>
+    		<div class="content">
+                <div>
+    		        <button class="button" id="capturePhotoButton">Foto</button>                                      
+                    <img style="display:none;margin:0 auto; width:120px; height:120px;" id="smallImage" src="" />    
+                </div> 
+                <br/><br/>
+    			<div>
+                    <input class="inputBox" type="text" id="todo" placeholder="Agregar Punto" />
+    				<button class="button" id="addButton" onclick="addTodo(); return false;">Guardar</button>
+    			</div>
+                <div class="list-label">Puntos:</div>
+                <ul id="todoItems"></ul>
+    		</div>
+    		<footer class="footer">
+    			<div>@KenKhik</div> 
+    		</footer>
+        </div>  
+        <div data-role="view" id="tabstrip-uiinteraction" data-title="Mapa">
+            <header class="header"> 
+    			<h1>Mi Lista</h1>
+    		</header>
+        </div>
+        
+        <div data-role="layout" data-id="mobile-tabstrip">
+            <header data-role="header">
+                <div data-role="navbar">
+                    <span data-role="view-title"></span>
+                </div>
+            </header>
+        </div>
+            
         <script type="text/javascript" charset="utf-8" src="cordova.js"></script>
 		<script type="text/javascript" charset="utf-8" src="Plugins/SQLite/SQLitePlugin.js"></script>        
         <script type="text/javascript" charset="utf-8" src="js/Sqlite.js"></script>
         <script type="text/javascript" charset="utf-8" src="js/Geo.js"></script>
         <script type="text/javascript" charset="utf-8" src="js/Camara.js"></script>
-        
-        
 	</body>
 </html>
 

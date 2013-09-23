@@ -17,8 +17,7 @@ body
 	color: #639ecd;
 	background-repeat: repeat-x;
 	background-image: url("img/header.png");
-	height: 60px;
-	position: fixed;
+	height: 0px;	
 	top: 0px;
 	display: block;
 	width: 100%;
@@ -210,3 +209,29 @@ h1
     margin-left: 6px;
     margin-top: 11px;
 }
+
+/*lista de puntos*/
+.product_overview
+{
+	clear: both;
+	margin-top: 15px;
+	border-bottom: 1px solid gray;
+	height: 75px;
+}
+
+.product_overview img
+{
+	width: 50px;
+	float: left;
+	margin-right: 10px;
+    margin-left: 5px;
+}
+
+.product_overview div
+{
+	white-space: nowrap;
+	overflow: hidden;
+}
+
+.product_overview .title { font-weight: bold;}
+.product_overview a {  }
